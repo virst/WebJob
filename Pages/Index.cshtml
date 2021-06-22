@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Information about my jobs.</p>
+    
+    <p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Job name
+                </th>
+                <th>
+                    Moment
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var item in Model.LastRuns)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => item.Key)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Value)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </p>
+
+</div>
