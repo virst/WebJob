@@ -1,0 +1,52 @@
+﻿@page
+@model WebJob.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>JobInfo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.LastRun)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.LastRun)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Parameters)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Parameters)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Active)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Active)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Blocking)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Blocking)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="JobInfo.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

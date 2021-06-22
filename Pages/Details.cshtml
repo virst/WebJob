@@ -1,0 +1,49 @@
+﻿@page
+@model WebJob.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>JobInfo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.LastRun)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.LastRun)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Parameters)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Parameters)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Active)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Active)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobInfo.Blocking)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobInfo.Blocking)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JobInfo.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

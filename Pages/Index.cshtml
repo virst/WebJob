@@ -1,36 +1,60 @@
 ﻿@page
-@model IndexModel
+@model WebJob.Pages.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Information about my jobs.</p>
-    
-    <p>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    Job name
-                </th>
-                <th>
-                    Moment
-                </th>
-            </tr>
-            </thead>
+<h1>Index</h1>
 
-            <tbody>
-            @foreach (var item in Model.LastRuns)
-            {
-                <tr>
-                    <td> @Html.DisplayFor(modelItem => item.Key)</td>
-                    <td> @Html.DisplayFor(modelItem => item.Value)</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    </p>
-
-</div>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInfo[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInfo[0].LastRun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInfo[0].Parameters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInfo[0].Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInfo[0].Blocking)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.JobInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastRun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parameters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blocking)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
