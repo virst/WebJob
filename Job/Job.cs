@@ -11,8 +11,8 @@ namespace WebJob.Job
     public static class Job
     {
 
-        public static readonly TimeSpan Period = new TimeSpan(0, 0, 30);
-        public const int CoolDown = 5 * 1000; // 5 sec.
+        public static TimeSpan Period = new (0, 0, 30); // 30 sec.
+        public static int CoolDown = 5 * 1000; // 5 sec.
 
         static Job()
         {

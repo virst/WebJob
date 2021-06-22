@@ -16,7 +16,7 @@ namespace WebJob.Pages
         [BindProperty]
         public JobInfo JobInfo { get; set; }
 
-        public ActionResult OnGetAsync(int? id)
+        public ActionResult OnGet(int? id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace WebJob.Pages
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public IActionResult OnPostAsync()
+        public IActionResult OnPost()
         {
             
             return RedirectToPage("./Index");

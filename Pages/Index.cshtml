@@ -6,7 +6,43 @@
 }
 
 <h1>Index</h1>
+<p>
+    <h3>Job config</h3>
+    <a asp-page="EditConfig">Edit config</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Parameter
+                </th>
+                <th>
+                    Value
+                </th>
 
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    Period (sec.)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PeriodSec)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Cool Down (sec.)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CoolDownSec)
+                </td>
+            </tr>
+    </table>
+
+</p>
+<hr />
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -32,29 +68,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.JobInfo) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastRun)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parameters)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Blocking)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.JobInfo)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastRun)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parameters)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Blocking)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

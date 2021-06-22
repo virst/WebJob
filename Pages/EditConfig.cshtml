@@ -1,0 +1,47 @@
+﻿@page
+@model WebJob.Pages.EditConfigModel
+@{
+    ViewData["Title"] = "Edit Config";
+}
+
+<h1>Edit Config</h1>
+
+<form method="post">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Parameter
+                </th>
+                <th>
+                    Value
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    Period (sec.)
+                </td>
+                <td>
+                    <input asp-for="PeriodSec" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Cool Down (sec.)
+                </td>
+                <td>
+                    <input asp-for="CoolDownSec" class="form-control" />
+                </td>
+            </tr>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+
+</form>
