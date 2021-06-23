@@ -11,14 +11,24 @@ namespace WebJob.Job
     public static class Job
     {
 
-        public static TimeSpan Period = new (0, 0, 30); // 30 sec.
+        public static TimeSpan Period = new(0, 0, 30); // 30 sec.
         public static int CoolDown = 5 * 1000; // 5 sec.
 
         static Job()
         {
             WebJobContext.JobInfo.Add(new JobInfo() { Id = 1, Name = "JOB - 1", Parameters = "INFO 1" });
-            WebJobContext.JobInfo.Add(new JobInfo() { Id = 2, Name = "JOB - 2", Parameters = "INFO 2" });
+            var j2 = new JobInfo() { Id = 2, Name = "JOB - 2", Parameters = "INFO 2" };
+            j2.UpdateLastRunFunc += J2_UpdateLastRunFunc;
+            WebJobContext.JobInfo.Add(j2);
             WebJobContext.JobInfo.Add(new JobInfo() { Id = 3, Name = "JOB - 3", Parameters = "INFO 3" });
+        }
+
+        private static DateTime J2_UpdateLastRunFunc(DateTime d, TimeSpan t)
+        {
+            d = DateTime.Now.Add(t);
+            var tmp = new DateTime(d.Year, d.Month, d.Day, 9, 0,0);
+            while (tmp < d) tmp = tmp.AddDays(1);
+            return tmp;
         }
 
         static void Run(JobInfo j)
@@ -43,9 +53,9 @@ namespace WebJob.Job
                 {
                     foreach (var job in WebJobContext.JobInfo)
                     {
-                        if (job.LastRun.Add(Period) > DateTime.Now || job.Blocking || !job.Active) continue;
+                        if (job.NextRun > DateTime.Now || job.Blocking || !job.Active) continue;
                         Run(job);
-                        job.LastRun = DateTime.Now;
+                        job.UpdateLastRun(Period);
                     }
                 }
                 catch (Exception ex)
